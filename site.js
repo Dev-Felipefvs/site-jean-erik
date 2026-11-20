@@ -51,3 +51,30 @@ if (hero && gsap) {
       .from('.hero-services', { y: 13, opacity: 0.65, duration: 0.54 }, 'entrada+=0.18');
   }, hero);
 }
+
+const ScrollTrigger = window.ScrollTrigger;
+
+if (gsap && ScrollTrigger) {
+  gsap.registerPlugin(ScrollTrigger);
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    const sections = document.querySelectorAll(
+      '.section-intro, .service-row, .about-name, .about-copy, .contact-details'
+    );
+
+    for (const section of sections) {
+      gsap.from(section, {
+        y: 22,
+        opacity: 0.58,
+        duration: 0.56,
+        ease: 'power3.out',
+        clearProps: 'transform,opacity',
+        immediateRender: false,
+        scrollTrigger: {
+          trigger: section,
+          start: 'clamp(top 96%)',
+          once: true
+        }
+      });
+    }
+  });
+}
