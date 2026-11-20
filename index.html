@@ -16,10 +16,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400..800&amp;display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script src="assets/gsap-3.15.1.min.js" defer></script>
   <script src="assets/scrolltrigger-3.15.1.min.js" defer></script>
-  <script src="site.js?v=2" defer></script>
+  <script src="site.js?v=3" defer></script>
 </head>
 <body>
   <a class="skip" href="#conteudo">Ir para o conteúdo</a>
@@ -31,6 +31,7 @@
     <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="navegacao" hidden>Menu <span class="menu-lines" aria-hidden="true"></span></button>
     <nav id="navegacao" class="navigation" aria-label="Navegação principal">
       <a href="#atendimentos">Atendimentos</a>
+      <a href="#consulta">Primeira consulta</a>
       <a href="#sobre">Sobre o Jean</a>
       <a href="#localizacao">Localização</a>
     </nav>
@@ -71,51 +72,107 @@
       </nav>
     </section>
 
-    <section id="atendimentos" class="section content-wrap" aria-labelledby="services-title">
-      <div class="section-intro">
+    <section id="atendimentos" class="section feature-section content-wrap" aria-labelledby="services-title">
+      <div class="section-intro feature-intro" data-reveal>
         <p class="eyebrow">Atendimentos</p>
-        <h2 id="services-title">Cuidado para o<br class="desktop-break"> seu movimento.</h2>
-        <p>A avaliação é o primeiro passo para entender o que está limitando seus movimentos e definir um plano alinhado à sua rotina.</p>
+        <h2 id="services-title">Cuidado para o seu movimento.</h2>
+        <p>Da rotina ao esporte, a avaliação ajuda a definir por onde começar e como acompanhar sua evolução.</p>
       </div>
-      <div class="services-list">
-        <article class="service-row" id="fisioterapia">
+      <div class="feature-cards" data-sequence>
+        <article class="feature-card" id="fisioterapia">
           <span class="service-icon icon-physio" aria-hidden="true"><i></i></span>
           <div><h3>Fisioterapia</h3><p>Acompanhamento para recuperar mobilidade, força e confiança nos movimentos do dia a dia.</p></div>
         </article>
-        <article class="service-row" id="quiropraxia">
+        <article class="feature-card" id="quiropraxia">
           <span class="service-icon icon-spine" aria-hidden="true"><i></i></span>
           <div><h3>Quiropraxia</h3><p>Avaliação da coluna e das articulações, com técnicas manuais quando indicadas para o seu caso.</p></div>
         </article>
-        <article class="service-row" id="reabilitacao">
+        <article class="feature-card" id="reabilitacao">
           <span class="service-icon icon-sport" aria-hidden="true"><i></i></span>
-          <div><h3>Reabilitação esportiva</h3><p>Um plano gradual para recuperar a função após uma lesão e preparar a volta ao treino ou ao esporte.</p></div>
+          <div><h3>Reabilitação esportiva</h3><p>Recuperação gradual da função após uma lesão, com atenção aos movimentos que você precisa retomar no treino.</p></div>
         </article>
       </div>
     </section>
 
+    <section class="showcase wrap" id="consultorio" aria-labelledby="showcase-title">
+      <div class="section-intro showcase-intro" data-reveal>
+        <div><p class="eyebrow">No consultório</p><h2 id="showcase-title">O cuidado de perto.</h2></div>
+        <p>Veja registros de técnicas manuais e do espaço onde acontecem as avaliações e sessões em Serraria.</p>
+      </div>
+      <div class="photo-cards" data-sequence>
+        <figure class="photo-card">
+          <div class="photo-window" data-parallax>
+            <img src="assets/terapia-manual.webp" width="576" height="790" loading="lazy" decoding="async" alt="Jean Erik aplica uma técnica manual em uma pessoa deitada de lado na maca">
+          </div>
+          <figcaption>Terapia manual</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-window" data-parallax>
+            <img src="assets/sessao-maca.webp" width="576" height="790" loading="lazy" decoding="async" alt="Jean Erik orienta o posicionamento de uma pessoa durante uma sessão na maca">
+          </div>
+          <figcaption>Sessão no consultório</figcaption>
+        </figure>
+        <figure class="photo-card">
+          <div class="photo-window" data-parallax>
+            <img src="assets/sala-atendimento.webp" width="576" height="790" loading="lazy" decoding="async" alt="Sala do consultório com maca e equipamentos de fisioterapia">
+          </div>
+          <figcaption>Sala de atendimento</figcaption>
+        </figure>
+      </div>
+      <a class="text-link photo-source" href="https://www.google.com/maps/search/?api=1&amp;query=Jean%20Erik%20-%20Fisioterapia%20e%20Quiropraxia&amp;query_place_id=ChIJ7a2hbENJAQcRxgb7YfedcH8" target="_blank" rel="noopener">Ver fotos e avaliações no Google Maps</a>
+    </section>
+
+    <section class="section feature-section content-wrap" id="consulta" aria-labelledby="consult-title">
+      <div class="section-intro feature-intro" data-reveal>
+        <p class="eyebrow">Primeira consulta</p>
+        <h2 id="consult-title">Como começa o atendimento.</h2>
+        <p>O primeiro encontro é para conversar sobre a sua rotina, avaliar seus movimentos e definir os próximos passos.</p>
+      </div>
+      <ol class="feature-cards process-cards" data-sequence>
+        <li class="feature-card"><div><h3>Conte o que mudou</h3><p>Fale sobre quando o incômodo começou, o que ficou mais difícil e quais atividades você quer retomar.</p></div></li>
+        <li class="feature-card"><div><h3>Faça a avaliação</h3><p>O Jean observa como você se movimenta e avalia o que pode estar limitando as atividades que você descreveu.</p></div></li>
+        <li class="feature-card"><div><h3>Combine os próximos passos</h3><p>Converse sobre quais formas de acompanhamento fazem sentido para o seu caso e como acompanhar a evolução.</p></div></li>
+      </ol>
+    </section>
+
     <section class="about wrap" id="sobre" aria-labelledby="about-title">
-      <div class="about-name">
+      <div class="about-name" data-reveal>
         <p class="eyebrow">Sobre o Jean</p>
         <h2 id="about-title">Jean <br>Erik<span>.</span></h2>
       </div>
-      <div class="about-copy">
+      <div class="about-copy" data-reveal>
         <p class="about-lead">Fisioterapeuta, quiropraxista e professor.</p>
         <p>Em Maceió, Jean atende presencialmente e também atua na formação de fisioterapeutas. No Instagram, compartilha conteúdos sobre anatomia, movimento e a prática da fisioterapia.</p>
         <a class="button button-light" href="https://www.instagram.com/jeaneriks/" target="_blank" rel="noopener"><span class="instagram-icon" aria-hidden="true"></span> Conheça o @jeaneriks</a>
       </div>
     </section>
 
+    <section class="section faq content-wrap" id="duvidas" aria-labelledby="faq-title">
+      <div class="section-intro" data-reveal>
+        <p class="eyebrow">Dúvidas frequentes</p>
+        <h2 id="faq-title">Antes de agendar.</h2>
+      </div>
+      <div class="faq-list" data-sequence>
+        <details name="duvidas"><summary>Como marco um atendimento?</summary><p>Envie uma mensagem pelo WhatsApp para combinar um horário. As sessões são presenciais, em Serraria, Maceió.</p></details>
+        <details name="duvidas"><summary>Preciso escolher entre fisioterapia e quiropraxia?</summary><p>Você pode agendar a avaliação e conversar com o Jean sobre qual abordagem faz sentido para seu caso.</p></details>
+        <details name="duvidas"><summary>Tem atendimento no sábado?</summary><p>O horário informado pelo consultório aos sábados é das 8h às 16h. Confirme a disponibilidade pelo WhatsApp.</p></details>
+      </div>
+    </section>
+
     <section class="section contact content-wrap" id="localizacao" aria-labelledby="contact-title">
-      <div class="section-intro">
+      <div class="section-intro" data-reveal>
         <p class="eyebrow">Localização e contato</p>
         <h2 id="contact-title">Vamos marcar<br class="desktop-break"> sua avaliação?</h2>
         <p>Chame no WhatsApp para combinar um horário e tirar dúvidas antes da primeira consulta.</p>
         <a class="button button-primary" href="https://wa.me/5582996329971?text=Ol%C3%A1%2C%20Jean%21%20Gostaria%20de%20agendar%20uma%20avalia%C3%A7%C3%A3o." target="_blank" rel="noopener"><span class="chat-icon" aria-hidden="true"></span> Falar com o Jean</a>
       </div>
-      <div class="contact-details">
+      <div class="contact-details" data-reveal>
         <div><h3>Endereço</h3><address>Av. Menino Marcelo, 7709<br>Serraria, Maceió – AL, 57046-000</address><a class="text-link" href="https://www.google.com/maps/dir/?api=1&amp;destination=Av.%20Menino%20Marcelo%2C%207709%2C%20Macei%C3%B3&amp;destination_place_id=ChIJ7a2hbENJAQcRxgb7YfedcH8" target="_blank" rel="noopener">Traçar rota no Google Maps</a></div>
         <div><h3>Horários</h3><dl class="hours"><div><dt>Segunda a sexta</dt><dd>08h às 21h</dd></div><div><dt>Sábado</dt><dd>08h às 16h</dd></div><div><dt>Domingo</dt><dd>Fechado</dd></div></dl></div>
         <div><h3>Telefone</h3><a class="text-link" href="tel:+5582996329971">(82) 99632-9971</a></div>
+      </div>
+      <div class="map-panel">
+        <iframe title="Mapa do consultório de Jean Erik no Google Maps" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3934.073917979449!2d-35.728794!3d-9.588897!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x70149436ca1aded%3A0x7f709df761fb06c6!2sJean%20Erik%20-%20Fisioterapia%20e%20Quiropraxia!5e0!3m2!1spt-BR!2sbr!4v1795198108244!5m2!1spt-BR!2sbr" width="600" height="450" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
     </section>
   </main>

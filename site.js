@@ -56,25 +56,59 @@ const ScrollTrigger = window.ScrollTrigger;
 
 if (gsap && ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-    const sections = document.querySelectorAll(
-      '.section-intro, .service-row, .about-name, .about-copy, .contact-details'
-    );
+  gsap.matchMedia().add({
+    motion: '(prefers-reduced-motion: no-preference)',
+    wide: '(min-width: 761px)'
+  }, ({ conditions }) => {
+    if (!conditions.motion) return;
 
-    for (const section of sections) {
-      gsap.from(section, {
-        y: 22,
-        opacity: 0.58,
-        duration: 0.56,
-        ease: 'power3.out',
-        clearProps: 'transform,opacity',
-        immediateRender: false,
-        scrollTrigger: {
-          trigger: section,
-          start: 'clamp(top 96%)',
-          once: true
+    const fade = {
+      y: 24, opacity: 0.64, duration: 0.58, ease: 'power3.out',
+      immediateRender: false, clearProps: 'transform,opacity'
+    };
+    const elements = document.querySelectorAll('[data-reveal], [data-sequence], [data-parallax]');
+
+    for (const element of elements) {
+      const enter = { trigger: element, start: 'clamp(top 92%)', once: true };
+
+      if (element.hasAttribute('data-parallax')) {
+        gsap.fromTo(element.querySelector('img'), { yPercent: -5 }, {
+          yPercent: 5,
+          ease: 'none',
+          scrollTrigger: { trigger: element, start: 'top bottom', end: 'bottom top', scrub: 0.45 }
+        });
+      } else if (element.hasAttribute('data-sequence')) {
+        const cards = Array.from(element.children);
+        const photoSequence = element.classList.contains('photo-cards');
+        const entrance = { ...fade, y: photoSequence ? 40 : 26 };
+
+        if (conditions.wide) {
+          const timeline = gsap.timeline({ scrollTrigger: enter });
+          cards.forEach((card, index) => {
+            timeline.from(card, {
+              ...entrance,
+              rotation: photoSequence ? [-3.5, 3, -2][index] : 0
+            }, [0, 0.135, 0.235][index]);
+          });
+        } else {
+          cards.forEach((card, index) => {
+            gsap.from(card, {
+              ...entrance,
+              y: photoSequence ? 32 : 22,
+              rotation: photoSequence ? [-2, 2, -1][index] : 0,
+              delay: index * 0.055,
+              scrollTrigger: { ...enter, trigger: card, start: 'clamp(top 95%)' }
+            });
+          });
         }
-      });
+      } else {
+        gsap.from(element, { ...fade, scrollTrigger: enter });
+      }
     }
+
+    const faq = document.querySelector('.faq-list');
+    const updatePositions = () => ScrollTrigger.refresh(true);
+    faq.addEventListener('toggle', updatePositions, true);
+    return () => faq.removeEventListener('toggle', updatePositions, true);
   });
 }
