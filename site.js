@@ -34,3 +34,20 @@ document.addEventListener('pointerdown', (event) => {
 });
 
 matchMedia('(max-width: 760px)').addEventListener('change', closeMenu);
+
+const hero = document.querySelector('.hero');
+const gsap = window.gsap;
+
+if (hero && gsap) {
+  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
+    gsap.timeline({
+      defaults: { duration: 0.64, ease: 'power3.out', clearProps: 'transform,opacity' }
+    })
+      .addLabel('entrada', 0)
+      .from('.title-line > span', { yPercent: 66, opacity: 0.3, stagger: 0.075 }, 'entrada')
+      .from('.hero-portrait', { y: 26, rotation: 4, scale: 0.97, opacity: 0.4, duration: 0.82 }, 'entrada+=0.04')
+      .from('.portrait-decoration', { xPercent: 0, yPercent: 5, rotation: 0, duration: 0.72 }, 'entrada+=0.1')
+      .from('.hero-description', { y: 10, opacity: 0.65, duration: 0.48 }, 'entrada+=0.14')
+      .from('.hero-services', { y: 13, opacity: 0.65, duration: 0.54 }, 'entrada+=0.18');
+  }, hero);
+}

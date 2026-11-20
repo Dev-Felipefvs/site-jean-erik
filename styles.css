@@ -188,23 +188,6 @@ section, article { scroll-margin-top: 2rem; }
   .site-footer p { order: 1; flex-basis: 100%; }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .title-line > span { animation: title-in 690ms var(--ease-out) both; }
-  .title-accent > span { animation-delay: 70ms; }
-  .hero-eyebrow, .hero-aside { animation: fade-in 540ms ease both; }
-  .hero-description { animation: rise-in 530ms var(--ease-out) 130ms both; }
-  .hero-cta { animation: fade-in 415ms ease 170ms both; }
-  .hero-portrait { animation: portrait-in 830ms var(--ease-out) 45ms both; }
-  .portrait-decoration { animation: card-unfold 760ms var(--ease-out) 125ms both; }
-  .hero-services { animation: rise-in 650ms var(--ease-out) 185ms both; }
-
-  @keyframes title-in { from { opacity: 0; transform: translateY(68%); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
-  @keyframes rise-in { from { opacity: 0; transform: translateY(13px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes portrait-in { from { opacity: 0; transform: translateY(1.75rem) rotate(4deg) scale(.96); } to { opacity: 1; transform: none; } }
-  @keyframes card-unfold { from { opacity: 0; transform: translate(0, 5%) rotate(0); } to { opacity: 1; transform: translate(-8%, 1%) rotate(-8deg); } }
-}
-
 @media (prefers-reduced-motion: reduce) {
   .button, .rating, .menu-toggle, .hero-service { transition-property: background-color, color; }
   .hero-service:hover, .hero-service:active, .button:active, .rating:active, .menu-toggle:active { transform: none; }
